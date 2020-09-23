@@ -1,0 +1,8 @@
+clsBitmap = 0, 0, 0, 0, C
+clsButton = 0, 0, 0, 0, C
+clsDockingHandler = 0, 0, 0, 0, C
+modAPI = 0, 0, 0, 0, C
+modEdges = 0, 0, 0, 0, C
+modPrefs = 0, 0, 0, 0, C
+modRegion = 0, 0, 0, 0, C
+clsSkinnedForm = 126, 45, 1024, 757, 

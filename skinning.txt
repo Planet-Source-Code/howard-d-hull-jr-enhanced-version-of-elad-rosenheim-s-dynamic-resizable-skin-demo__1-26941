@@ -1,0 +1,61 @@
+Skinning a form is extremly easy. 
+
+Initial Setup is as follows:
+  Open the SkinnedFormDLL.vbp project and compile into a DLL	(Only need to do this once)
+  Start a new project. 
+      From Project -> References menu, add 'Dynamic Technologies Skinned Form DLL v1.0'
+
+Now we can skin a form:
+On the form you are going to skin add a picturebox called 'picClientArea' or whatever you want. 
+Any controls you are going to have on this form must be contained within this picturebox.
+
+All Minimum.. and Maximum.. properties are in Pixels.
+
+=============================================================================================
+In the form's General Declarations section put:
+
+    Private WithEvents m_SkinnedForm      As clsSkinnedForm
+
+
+
+in the Form_Load routine put
+
+    '// Code Snippet Start
+
+    Set m_SkinnedForm = New clsSkinnedForm
+    Set m_SkinnedForm.SkinnedForm = Me
+    Set m_SkinnedForm.ClientArea = picClientArea	' Or what ever you called the picturebox
+
+    m_SkinnedForm.MinimumClientAreaHeight = 250		' Optionally the clientarea picturebox height will never be less than this
+    m_SkinnedForm.MinimumClientAreaWidth = 350		' Optionally the clientarea picturebox width will never be less than this
+
+    m_SkinnedForm.MaximumFormHeight = Screen.Height / Screen.TwipsPerPixelY	' Optionally the outside Height of the Form will never be greater than this
+    m_SkinnedForm.MaximumFormWidth = Screen.Width / Screen.TwipsPerPixelX	' Optionally the outside Width of the Form will never be greater than this
+    
+    m_SkinnedForm.SkinForm ("Default")	' PAss the Name of the skin you want to use. This is the Folder name within the Skin folder.
+
+    '// Code Snippet End
+
+
+
+Other optional properties that can be changed.
+    
+    m_SkinnedForm.Movable = {True/False}	' Boolean value to determine if the form is movable. (Default = True)
+    m_SkinnedForm.Resizable = {True/False}	' Boolean value to determine if the form is Resizable. (Default = True)
+    m_SkinnedForm.AlwaysOnTop = {True/False}	' Boolean value to determine if the form is OnTop of all other Windows. (Default = False)
+
+
+Properties available after the form is skinned:
+
+    m_SkinnedForm.FontColor
+    m_SkinnedForm.FontBold
+    m_SkinnedForm.BackColor
+
+    These properties can be used to change the appropriate properties of the controls on the skinned form. 
+    See the UpdateControls() routine in the Demo project.
+
+
+=============================================================================================
+There are over 50 KewlPad skins available at http://www.deviantart.com/browse/?section=kewlpad
+   *Please ask the original Skin author for permission before distributing there skins with your app.
+=============================================================================================
